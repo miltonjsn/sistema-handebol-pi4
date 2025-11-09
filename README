@@ -1,103 +1,184 @@
-# Sistema de Estatísticas de Handebol
+# 🏐 Sistema de Estatísticas de Handebol
 
-Sistema web para gestão de jogadores, jogos e eventos de partidas de handebol, desenvolvido para uso interno da equipe técnica.  
-O projeto foi construído com **React**, **Tailwind CSS**, e faz integração com um backend (Node.js + MySQL).
-
----
-
-## 📁 Estrutura do Projeto
-
-sistema-handebol-novo/
-├─ node_modules/
-├─ public/
-├─ src/
-│ ├─ components/
-│ │ ├─ Footer.jsx
-│ │ ├─ Header.jsx
-│ │ └─ JogadorCard.jsx
-│ ├─ pages/
-│ │ ├─ Home.jsx
-│ │ ├─ Jogadores.jsx
-│ │ ├─ Jogos.jsx
-│ │ ├─ Eventos.jsx
-│ │ └─ Login.jsx
-│ ├─ App.jsx
-│ └─ index.jsx
-├─ package.json
-└─ README.md
-
+Sistema web desenvolvido como parte do **Projeto Integrador em Computação IV** da **UNIVESP**, com o objetivo de **registrar, gerenciar e exibir estatísticas básicas de jogos de handebol**.  
+O projeto foi inspirado nas necessidades da **Liga Paulista de Handebol**, que buscava uma ferramenta simples e acessível para o acompanhamento técnico das partidas.
 
 ---
 
-## ⚡ Funcionalidades
-
-- **Login da equipe técnica**  
-  - Validação de email e senha.
-- **Gerenciamento de Jogadores**  
-  - Cadastrar, editar e excluir jogadores.
-- **Gerenciamento de Jogos**  
-  - Cadastrar, editar e excluir jogos.
-- **Gerenciamento de Eventos**  
-  - Cadastrar, editar e excluir eventos ligados a jogos e jogadores.
-- **Acessibilidade**  
-  - Botões para aumentar ou diminuir o tamanho do texto.
-- **Interface responsiva**  
-  - Layout compatível com desktop e dispositivos móveis.
+## 📖 Sumário
+1. [🎯 Objetivo do Projeto](#-objetivo-do-projeto)
+2. [🏗️ Tecnologias Utilizadas](#️-tecnologias-utilizadas)
+3. [⚙️ Funcionalidades Principais](#️-funcionalidades-principais)
+4. [🧩 Estrutura do Projeto](#-estrutura-do-projeto)
+5. [💾 Banco de Dados](#-banco-de-dados)
+6. [🖼️ Imagens do Sistema](#️-imagens-do-sistema)
+7. [🧠 Conceitos e Aprendizados](#-conceitos-e-aprendizados)
+8. [📹 Demonstração em Vídeo](#-demonstração-em-vídeo)
+9. [🚀 Como Executar o Projeto](#-como-executar-o-projeto)
+10. [🔒 Acessibilidade](#-acessibilidade)
+11. [👥 Autores](#-autores)
 
 ---
 
-## 🛠 Tecnologias Utilizadas
+## 🎯 Objetivo do Projeto
 
-- Frontend:
-  - React
-  - Tailwind CSS
-  - React Router Dom
-- Backend (necessário para integração):
-  - Node.js
-  - Express
-  - MySQL
-- Ferramentas:
-  - Fetch API para comunicação frontend-backend
+O sistema tem como propósito **otimizar o controle de estatísticas esportivas** durante as partidas de handebol, permitindo que a equipe técnica registre dados como:
+- Gols, defesas, cartões e exclusões;
+- Nome e posição dos atletas;
+- Informações básicas da partida;
+- Relatórios resumidos de desempenho.
+
+Essa aplicação também serviu como **base de aprendizado prático** sobre desenvolvimento web completo, incluindo frontend, backend e banco de dados.
 
 ---
 
-## 🚀 Como Rodar o Projeto
+## 🏗️ Tecnologias Utilizadas
 
-1. Clone este repositório:
-```bash
-git clone <url-do-repositorio>
+### **Frontend**
+- [React.js](https://react.dev/) – Framework JavaScript para interfaces dinâmicas;
+- [Tailwind CSS](https://tailwindcss.com/) – Framework CSS para design moderno e responsivo;
+- JavaScript (ES6+), HTML5, CSS3.
 
-2. Entre na pasta do projeto:
-cd sistema-handebol-novo
+### **Backend**
+- [Node.js](https://nodejs.org/) – Ambiente de execução JavaScript no servidor;
+- [Express.js](https://expressjs.com/) – Framework para criação de APIs RESTful.
 
-3. Instale as dependências:
+### **Banco de Dados**
+- [MySQL](https://www.mysql.com/) – Banco de dados relacional;
+- Integração via biblioteca `mysql2`.
+
+### **Outras Tecnologias**
+- Git e GitHub (controle de versão);
+- Ambiente Linux (desenvolvimento e testes);
+- Nuvem (para futura implantação).
+
+---
+
+## ⚙️ Funcionalidades Principais
+
+✅ Cadastro de jogos (equipes, local, data e horário);  
+✅ Registro de jogadores e estatísticas individuais;  
+✅ Exibição dinâmica das estatísticas em tabelas;  
+✅ Geração de relatórios filtrados por partida;  
+✅ Interface responsiva com Tailwind CSS;  
+✅ Recursos básicos de acessibilidade (contraste e aumento de fonte).
+
+---
+
+## 🧩 Estrutura do Projeto
+
+📦 sistema-handebol
+├── 📁 frontend/
+│ ├── 📁 src/
+│ │ ├── 📁 pages/
+│ │ │ ├── Home.jsx
+│ │ │ ├── RegisterGame.jsx
+│ │ │ └── Statistics.jsx
+│ │ ├── 📁 components/
+│ │ │ └── Navbar.jsx
+│ │ ├── App.jsx
+│ │ └── index.js
+│ └── package.json
+│
+├── 📁 backend/
+│ ├── server.js
+│ ├── routes/
+│ │ └── games.js
+│ ├── controllers/
+│ │ └── gameController.js
+│ ├── database/
+│ │ └── connection.js
+│ └── package.json
+│
+└── README.md
+
+
+---
+
+## 💾 Banco de Dados
+
+**Tabelas principais:**
+- `jogos` → informações gerais das partidas  
+- `jogadores` → dados dos atletas (nome, posição, número)  
+- `estatisticas` → relação entre jogo e jogador, com gols, defesas etc.
+
+Exemplo de criação de tabela:
+
+```sql
+CREATE TABLE jogos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  equipe_casa VARCHAR(100),
+  equipe_visitante VARCHAR(100),
+  data_jogo DATE,
+  local VARCHAR(100)
+);
+
+🧠 Conceitos e Aprendizados
+
+Durante o desenvolvimento, foram explorados os seguintes conceitos:
+- Estrutura de uma aplicação web completa (frontend + backend + banco de dados);
+- Consumo de APIs REST e integração entre camadas;
+- Boas práticas de desenvolvimento com React e Express;
+- Organização de código em componentes e rotas;
+- Versionamento com Git e hospedagem no GitHub;
+- Acessibilidade digital e design responsivo.
+
+🚀 Como Executar o Projeto
+🔧 Pré-requisitos
+
+Node.js e npm instalados
+
+MySQL em execução local
+
+Editor de código (VS Code recomendado)
+
+🔹 Clonar o repositório
+git clone https://github.com/SEU_USUARIO/sistema-handebol-pi4.git
+
+🔹 Instalar dependências
+cd frontend
 npm install
 
-4. Inicie o frontend:
+Backend:
+cd backend
+npm install
+
+🔹 Configurar o banco de dados
+
+Edite o arquivo backend/database/connection.js com as credenciais do seu MySQL.
+
+🔹 Executar o projeto
+
+Backend:
+cd backend
 npm start
-O frontend rodará em http://localhost:5173 (ou porta padrão do Vite).
-Certifique-se de que o backend também esteja rodando em http://localhost:3000.
 
-🔗 Rotas do Sistema
+Frontend:
+cd frontend
+npm run dev
 
-/login → Login da equipe técnica
+Acesse no navegador:
+👉 http://localhost:5173/
 
-/ → Home (lista de jogadores)
+🔒 Acessibilidade
 
-/jogadores → Gerenciamento de jogadores
+O sistema foi desenvolvido com foco em inclusão e usabilidade, contando com:
 
-/jogos → Gerenciamento de jogos
+Botões de aumento e redução do tamanho do texto;
 
-/eventos → Gerenciamento de eventos
+Modo de alto contraste;
 
-📌 Observações
+Estrutura semântica para navegação via teclado.
 
-Para cadastro, edição e exclusão de dados, é necessário que o backend esteja funcionando corretamente.
+Essas práticas seguem as recomendações da WCAG 2.1.
 
-Aumentar/diminuir fonte é feito através de botões no header (implementação de acessibilidade).
+👥 Autores
 
-Sistema desenvolvido para uso interno da equipe técnica da Liga de Handebol.
+Projeto desenvolvido por:
 
-📝 Autor
+Milton J. S. Neto
+Estudante de Engenharia da Computação – UNIVESP
 
-Milton Neto – Desenvolvedor do projeto.
+📘 Instituição: Universidade Virtual do Estado de São Paulo – UNIVESP
+📅 Ano: 2025
+📍 Projeto Integrador em Computação IV
