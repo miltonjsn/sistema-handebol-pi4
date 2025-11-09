@@ -1,0 +1,103 @@
+# Sistema de Estatísticas de Handebol
+
+Sistema web para gestão de jogadores, jogos e eventos de partidas de handebol, desenvolvido para uso interno da equipe técnica.  
+O projeto foi construído com **React**, **Tailwind CSS**, e faz integração com um backend (Node.js + MySQL).
+
+---
+
+## 📁 Estrutura do Projeto
+
+sistema-handebol-novo/
+├─ node_modules/
+├─ public/
+├─ src/
+│ ├─ components/
+│ │ ├─ Footer.jsx
+│ │ ├─ Header.jsx
+│ │ └─ JogadorCard.jsx
+│ ├─ pages/
+│ │ ├─ Home.jsx
+│ │ ├─ Jogadores.jsx
+│ │ ├─ Jogos.jsx
+│ │ ├─ Eventos.jsx
+│ │ └─ Login.jsx
+│ ├─ App.jsx
+│ └─ index.jsx
+├─ package.json
+└─ README.md
+
+
+---
+
+## ⚡ Funcionalidades
+
+- **Login da equipe técnica**  
+  - Validação de email e senha.
+- **Gerenciamento de Jogadores**  
+  - Cadastrar, editar e excluir jogadores.
+- **Gerenciamento de Jogos**  
+  - Cadastrar, editar e excluir jogos.
+- **Gerenciamento de Eventos**  
+  - Cadastrar, editar e excluir eventos ligados a jogos e jogadores.
+- **Acessibilidade**  
+  - Botões para aumentar ou diminuir o tamanho do texto.
+- **Interface responsiva**  
+  - Layout compatível com desktop e dispositivos móveis.
+
+---
+
+## 🛠 Tecnologias Utilizadas
+
+- Frontend:
+  - React
+  - Tailwind CSS
+  - React Router Dom
+- Backend (necessário para integração):
+  - Node.js
+  - Express
+  - MySQL
+- Ferramentas:
+  - Fetch API para comunicação frontend-backend
+
+---
+
+## 🚀 Como Rodar o Projeto
+
+1. Clone este repositório:
+```bash
+git clone <url-do-repositorio>
+
+2. Entre na pasta do projeto:
+cd sistema-handebol-novo
+
+3. Instale as dependências:
+npm install
+
+4. Inicie o frontend:
+npm start
+O frontend rodará em http://localhost:5173 (ou porta padrão do Vite).
+Certifique-se de que o backend também esteja rodando em http://localhost:3000.
+
+🔗 Rotas do Sistema
+
+/login → Login da equipe técnica
+
+/ → Home (lista de jogadores)
+
+/jogadores → Gerenciamento de jogadores
+
+/jogos → Gerenciamento de jogos
+
+/eventos → Gerenciamento de eventos
+
+📌 Observações
+
+Para cadastro, edição e exclusão de dados, é necessário que o backend esteja funcionando corretamente.
+
+Aumentar/diminuir fonte é feito através de botões no header (implementação de acessibilidade).
+
+Sistema desenvolvido para uso interno da equipe técnica da Liga de Handebol.
+
+📝 Autor
+
+Milton Neto – Desenvolvedor do projeto.
